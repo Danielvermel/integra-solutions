@@ -1,8 +1,17 @@
 <template>
   <body>
-    <h1>Home Page</h1>
+    <h3>Home Page</h3>
 
-    <PdfViewerSideBySide v-if="pdfOneSrc" :pdfSrc="pdfOneSrc" />
+    <PdfViewerSideBySide
+      v-if="pdfOneSrc && pdfTwoSrc"
+      :pdfOneSrc="pdfOneSrc"
+      :pdfTwoSrc="pdfTwoSrc"
+    />
+    <input
+      type="file"
+      @change.prevent="selectFile($event)"
+      accept=".docx, .pdf"
+    />
     <input
       type="file"
       @change.prevent="selectFile($event)"
@@ -17,14 +26,12 @@ import axios from "axios";
 import PdfViewerSideBySide from "../components/PdfViewerSideBySide.vue";
 
 const pdfOneSrc = ref(null); // Will hold the Blob URL of the selected PDF
+const pdfTwoSrc = ref(null); // Will hold the Blob URL of the selected PDF
 
 const selectFile = async (event) => {
-  const input = document.createElement("input");
-  input.type = "file";
-  input.accept = ".docx, .pdf";
-  console.log("here - - ");
-
   const file = event.target.files[0];
+
+  console.log("file: ", file);
 
   if (!file) {
     console.error("No file selected");
@@ -32,10 +39,20 @@ const selectFile = async (event) => {
   }
 
   // Convert the selected file into a Blob URL
-  pdfOneSrc.value = URL.createObjectURL(file);
-  console.log(pdfOneSrc.value);
+  if (pdfOneSrc.value) {
+    pdfTwoSrc.value = URL.createObjectURL(file);
+    console.log(pdfTwoSrc.value);
 
-  sendFileToServer(file);
+    sendFileToServer(file);
+  } else {
+    pdfOneSrc.value = URL.createObjectURL(file);
+    console.log(pdfOneSrc.value);
+
+    sendFileToServer(file);
+  }
+
+  console.log("pdfOneSrc.value: ", pdfOneSrc.value);
+  console.log("pdfTwoSrc.value: ", pdfTwoSrc.value);
 };
 
 const sendFileToServer = async (file) => {

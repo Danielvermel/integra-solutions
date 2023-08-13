@@ -9,7 +9,7 @@ const count = ref(0);
 </script>
 
 <template>
-  <h1>About Page</h1>
+  <h3>About Page</h3>
 </template>
 
 <style scoped></style>
