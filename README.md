@@ -43,16 +43,13 @@ To run the IntegraSolutions project, follow the setup instructions below for bot
 2. Create and activate a virtual environment using Pipenv:
 
    ```bash
-   cd backend
-   pipenv shell
+    pipenv shell
    ```
 
 3. Install the backend dependencies using Pipenv:
 
    ````bash
    pipenv install -r requirements.txt
-   ```
-
    ````
 
 4. Run Flask Application:
