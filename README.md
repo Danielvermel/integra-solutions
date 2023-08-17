@@ -1,6 +1,6 @@
 # IntegraSolutions
 
-IntegraSolutions is a data validation software project that consists of both a backend (built with Flask) and a frontend (built with Vue.js). It provides data validation functionalities to ensure data integrity and accuracy.
+IntegraSolutions is a data validation software project consisting of a backend (built with Flask) and a frontend (built with Vue.js). It provides data validation functionalities to ensure data integrity and accuracy.
 
 ## Table of Contents
 
