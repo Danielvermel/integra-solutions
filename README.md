@@ -65,8 +65,6 @@ To run the IntegraSolutions project, follow the setup instructions below for bot
 1. Navigate to the `frontend` folder:
    ```bash
    cd frontend
-   npm install
-   npm run dev
    ```
 2. Install the frontend dependencies using npm:
 
